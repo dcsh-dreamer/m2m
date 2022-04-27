@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'course_create' %}" class="btn btn-primary">新增</a>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>課程/班級名稱</th>
+            <th>類型</th>
+            <th>學生數</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in course_list  %}
+        <tr>
+            <td>
+                <a href="{% url 'course_view' course.id %}">
+                    {{ course.name }}
+                </a>
+            </td>
+            <td>{{ course.get_ctype_display }}</td>
+            <td>{{ course.students.count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
