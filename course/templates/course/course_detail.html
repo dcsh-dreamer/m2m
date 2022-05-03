@@ -6,12 +6,14 @@
 <div class="card">
     <div class="card-header">
         <h3 class="">成員列表</h3>
-        <a href="{% url 'course_add_member' %}" class="btn btn-primary"></a>
+        <a href="{% url 'course_add_member' course.id %}" class="btn btn-primary"></a>
     </div>
     <ul class="list-group list-group-flush">
         {% for student in course.students.all %}
         <li class="list-group-item">
-            {{ student.name }}
+            <a href="{% url 'student_edit' student.id %}">
+                {{ student.name }}
+            </a>
         </li>
         {% endfor %}
     </ul>

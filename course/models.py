@@ -18,3 +18,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        unique_together = ['sno']
